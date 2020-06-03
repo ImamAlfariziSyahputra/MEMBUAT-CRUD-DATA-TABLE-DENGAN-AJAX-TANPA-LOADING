@@ -66,7 +66,7 @@
         $.ajax({
             type: 'POST',
             url: "get_data_all.php",
-            data: {id,id},
+            data: {id:id},
             dataType:'json',
             success: function(response){
                 reset();
@@ -91,7 +91,7 @@
         $.ajax({
             type: 'POST',
             url: "hapus_data.php",
-            data: {id,id},
+            data: {id:id},
             success: function() {
                 $('.data').load("data.php");
             }, error: function(response){
