@@ -12,6 +12,11 @@ $tanggal_masuk = stripslashes(strip_tags(htmlspecialchars($_POST['tanggal_masuk'
 if ($id == "") {
     $query = "INSERT into tbl_siswa (nama_siswa, alamat, jurusan, jenis_kelamin, tgl_masuk) VALUES (?,?,?,?,?)";
     $prepare1 = $db1->prepare($query);
+    $prepare1->bind_param("sssss", $nama_siswa, $alamat, $jurusan, $jenkel, $tanggal_masuk);
+    $prepare1->execute();
+} else {
+    $query = "UPDATE tbl_siswa SET  nama_siswa=?, alamat=?, jurusan=?, jenis_kelamin=?, tgl_masuk=? WHERE id=?";
+    $prepare1 = $db1->prepare($query);
     $prepare1->bind_param("sssssi", $nama_siswa, $alamat, $jurusan, $jenkel, $tanggal_masuk, $id);
     $prepare1->execute();
 }
